@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class TurnObjectArrowKeys : MonoBehaviour
 {
-    Rigidbody rb;
-    float torque = 0f;
+    public Rigidbody rb;
+    public float torque = 0f;
 
     private void Awake()
     {
