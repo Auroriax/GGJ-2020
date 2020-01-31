@@ -2,12 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(Rigidbody))]
 public class TurnObjectArrowKeys : MonoBehaviour
 {
     public Rigidbody rb;
-    public float torque = 0f;
+    public float torque = 200f;
 
-    private void Awake()
+    private void Reset()
     {
         rb = GetComponent<Rigidbody>();
     }
