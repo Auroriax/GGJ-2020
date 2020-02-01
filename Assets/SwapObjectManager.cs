@@ -29,4 +29,20 @@ public class SwapObjectManager : MonoBehaviour
         ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         raycastSuccess = Physics.Raycast(ray, out hit, 100.0f);
     }
+
+    public void stopAllAngularMotion()
+    {
+        var rbs = FindObjectsOfType<Rigidbody>();
+
+        for(var i = 0; i != rbs.Length; i += 1)
+        {
+            var rb = rbs[i];
+            var con = rb.constraints;
+            rb.angularVelocity = Vector3.zero;
+            rb.freezeRotation = true;
+
+            rb.freezeRotation = false;
+            rb.constraints = con;
+        }
+    }
 }
