@@ -21,4 +21,10 @@ public class GameStateController : MonoBehaviour
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
+
+    public void LevelCompleted()
+    {
+        // TODO
+        ResetGame();
+    }
 }
