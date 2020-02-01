@@ -20,6 +20,11 @@ public class PickUpAble : MonoBehaviour
     void Start()
     {
         outline.OutlineWidth = 0f;
+        if (SwapManager == null)
+        {
+            Debug.LogWarning("No swapmanager ref assigned to this instance, attempting to automatically assign", this);
+            SwapManager = FindObjectOfType<SwapObjectManager>();
+        }
     }
 
     // Update is called once per frame
