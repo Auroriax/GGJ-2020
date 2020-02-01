@@ -62,17 +62,33 @@ public class PickUpAble : MonoBehaviour
         }
 
         //Set outline
-        if (SwapManager.raycastSuccess)
-        {
-            if (SwapManager.hit.collider.gameObject == this.gameObject)
-            {
-                outline.OutlineWidth = 5f;
-            }
-            else
-            {
-                outline.OutlineWidth = 0f;
-            }
-        }
+        var somethingSelected = (SwapManager.CurrentlySelectedObject != null);
+        var amISelected = (SwapManager.CurrentlySelectedObject == this.gameObject);
+        var hovered = SwapManager.raycastSuccess && SwapManager.hit.collider.gameObject == this.gameObject;
 
+        if (amISelected)
+        {
+            outline.OutlineMode = Outline.Mode.OutlineVisible;
+            outline.OutlineColor = new Color(1f, 0f, 0f);
+            outline.OutlineWidth = 2f;
+        }
+        else
+        if (hovered)
+        {
+            outline.OutlineMode = Outline.Mode.OutlineVisible;
+            outline.OutlineColor = new Color(1f, 1f, 1f);
+            outline.OutlineWidth = 5f;
+        }
+        else
+        if (somethingSelected)
+        {
+            outline.OutlineMode = Outline.Mode.OutlineVisible;
+            outline.OutlineColor = new Color(1f, 1f, 1f);
+            outline.OutlineWidth = 2f;
+        }
+        else
+        {
+            outline.OutlineWidth = 0f;
+        }
     }
 }

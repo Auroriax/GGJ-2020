@@ -23,12 +23,12 @@ public class MovableBar : MonoBehaviour
         //This grabs the position of the object in the world and turns it into the position on the screen
         gameObjectSreenPoint = Camera.main.WorldToScreenPoint(gameObject.transform.position);
         //Sets the mouse pointers vector3
-        mousePreviousLocation = new Vector3(Input.mousePosition.x, Input.mousePosition.y, gameObjectSreenPoint.z);
+        mousePreviousLocation = new Vector3(Input.mousePosition.x, gameObjectSreenPoint.y, Input.mousePosition.y);
     }
 
     void OnMouseDrag()
     {
-        mouseCurLocation = new Vector3(Input.mousePosition.x, Input.mousePosition.y, gameObjectSreenPoint.z);
+        mouseCurLocation = new Vector3(Input.mousePosition.x, gameObjectSreenPoint.y, Input.mousePosition.y);
         var force = mouseCurLocation - mousePreviousLocation;//Changes the force to be applied
         mousePreviousLocation = mouseCurLocation;
 
