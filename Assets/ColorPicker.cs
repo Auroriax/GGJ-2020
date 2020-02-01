@@ -1,23 +1,31 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
-[ExecuteInEditMode] [RequireComponent(typeof(Renderer))]
+[ExecuteInEditMode] 
+[RequireComponent(typeof(Renderer))]
 public class ColorPicker : MonoBehaviour
 {
-    public Color selectedColor = Color.blue;
-    public Renderer rendererComponent;
+    public Material[] Materials;
 
-    // Start is called before the first frame update
-    void Start()
+    private Renderer rendererComponent;
+
+    private void Start()
     {
         if (!rendererComponent)
             rendererComponent = GetComponent<Renderer>();
     }
 
-    // Update is called once per frame
-    void Update()
+    public void SelectMaterialDefault()
     {
-        rendererComponent.material.color = selectedColor;
+        rendererComponent.material = Materials[0];
+    }
+
+    public void SelectMaterialGood()
+    {
+        rendererComponent.material = Materials[1];
+    }
+
+    public void SelectMaterialWrong()
+    {
+        rendererComponent.material = Materials[2];
     }
 }
