@@ -5,11 +5,13 @@ using UnityEngine;
 [RequireComponent(typeof(Outline))]
 public class PickUpAble : MonoBehaviour
 {
+    public Rigidbody rb;
     public SwapObjectManager SwapManager;
     public Outline outline;
 
     private void Reset()
     {
+        rb = this.gameObject.GetComponent<Rigidbody>();
         SwapManager = FindObjectOfType<SwapObjectManager>();
         outline = this.gameObject.GetComponent<Outline>();
     }
@@ -45,9 +47,23 @@ public class PickUpAble : MonoBehaviour
                     Debug.Log("Swapping: " + transform.name);
                     var swapWith = SwapManager.CurrentlySelectedObject;
                     var goTo = swapWith.transform.position;
+                    var rotateTo = swapWith.transform.localEulerAngles;
 
                     swapWith.transform.position = this.transform.position;
+                    swapWith.transform.localEulerAngles = this.transform.localEulerAngles;
                     this.transform.position = goTo;
+                    this.transform.localEulerAngles = rotateTo;
+
+                    if (rb)
+                    {
+                        stopRigidBodyRotation(rb);
+                    }
+
+                    var otherrb = swapWith.GetComponent<Rigidbody>();
+                    if (otherrb)
+                    {
+                        stopRigidBodyRotation(otherrb);
+                    }
 
                     SwapManager.CurrentlySelectedObject = null;
                 }
@@ -67,5 +83,13 @@ public class PickUpAble : MonoBehaviour
             }
         }
 
+    }
+
+    void stopRigidBodyRotation(Rigidbody rb)
+    {
+        rb.angularVelocity = Vector3.zero;
+        rb.freezeRotation = true;
+        rb.freezeRotation = false;
+        rb.constraints = RigidbodyConstraints.FreezePosition | RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationZ;
     }
 }
