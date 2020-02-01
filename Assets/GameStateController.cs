@@ -24,7 +24,7 @@ public class GameStateController : MonoBehaviour
         {
             var text = "Level ";
             if (Current == -1)
-                text += "Unknown";
+                text += "U";
             else
                 text += (Current + 1).ToString();
             LevelText.text = text;
