@@ -5,11 +5,13 @@ using UnityEngine;
 [RequireComponent(typeof(Outline))]
 public class PickUpAble : MonoBehaviour
 {
+    public Rigidbody rb;
     public SwapObjectManager SwapManager;
     public Outline outline;
 
     private void Reset()
     {
+        rb = this.gameObject.GetComponent<Rigidbody>();
         SwapManager = FindObjectOfType<SwapObjectManager>();
         outline = this.gameObject.GetComponent<Outline>();
     }
@@ -23,7 +25,7 @@ public class PickUpAble : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //Control swapping cog wheels (I know this is very unoptimized)
+        //Control swapping cog wheels
         if (SwapManager.raycastSuccess && SwapManager.hit.collider.gameObject == this.gameObject && Input.GetMouseButtonDown(0))
         {
             if (SwapManager.CurrentlySelectedObject == null)
@@ -45,9 +47,23 @@ public class PickUpAble : MonoBehaviour
                     Debug.Log("Swapping: " + transform.name);
                     var swapWith = SwapManager.CurrentlySelectedObject;
                     var goTo = swapWith.transform.position;
+                    var rotateTo = swapWith.transform.localEulerAngles;
 
                     swapWith.transform.position = this.transform.position;
+                    swapWith.transform.localEulerAngles = this.transform.localEulerAngles;
                     this.transform.position = goTo;
+                    this.transform.localEulerAngles = rotateTo;
+
+                    if (rb)
+                    {
+                        stopRigidBodyRotation(rb);
+                    }
+
+                    var otherrb = swapWith.GetComponent<Rigidbody>();
+                    if (otherrb)
+                    {
+                        stopRigidBodyRotation(otherrb);
+                    }
 
                     SwapManager.CurrentlySelectedObject = null;
                 }
@@ -67,5 +83,14 @@ public class PickUpAble : MonoBehaviour
             }
         }
 
+    }
+
+    void stopRigidBodyRotation(Rigidbody rib)
+    {
+        rib.angularVelocity = Vector3.zero;
+        rib.freezeRotation = true;
+
+        rib.freezeRotation = false;
+        rib.constraints = RigidbodyConstraints.FreezePosition | RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationZ;
     }
 }

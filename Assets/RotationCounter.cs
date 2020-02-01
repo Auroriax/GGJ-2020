@@ -2,12 +2,12 @@
 
 public class RotationCounter : MonoBehaviour
 {
-    public float SignalOnRotationDegrees = 180;
-    public bool DetectPositiveMotion = true;
+    public float SignalOnRotationDegrees = 180;  // max 360
 
     public ProgressBar ProgressBar;
     public GameStateController GameStateController;
 
+    public bool DetectPositiveMotion;
     public float DetectedRotation = 0;
     public float previousY;
 
@@ -30,20 +30,17 @@ public class RotationCounter : MonoBehaviour
         else if (previousY < 90 && currentY >= 270)
             recalculatedPreviousY += 360;
 
-        if (DetectPositiveMotion)
-            DetectedRotation += currentY - recalculatedPreviousY;
-        else
-            DetectedRotation += recalculatedPreviousY - currentY;
-
+        DetectedRotation += currentY - recalculatedPreviousY;
         previousY = currentY;
-        if (DetectedRotation <= 0)
-            return;
+        var positiveRotation = DetectedRotation > 0 ? DetectedRotation : DetectedRotation * -1;
 
         if (ProgressBar != null)
-            ProgressBar.Progress = DetectedRotation / SignalOnRotationDegrees;
+        {
+            ProgressBar.Progress = positiveRotation / SignalOnRotationDegrees;
+        }
         if (GameStateController != null)
         {
-            if (DetectedRotation > SignalOnRotationDegrees)
+            if (positiveRotation > SignalOnRotationDegrees)
                 GameStateController.LevelCompleted();
         }
     }
