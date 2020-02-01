@@ -54,16 +54,7 @@ public class PickUpAble : MonoBehaviour
                     this.transform.position = goTo;
                     this.transform.localEulerAngles = rotateTo;
 
-                    if (rb)
-                    {
-                        stopRigidBodyRotation(rb);
-                    }
-
-                    var otherrb = swapWith.GetComponent<Rigidbody>();
-                    if (otherrb)
-                    {
-                        stopRigidBodyRotation(otherrb);
-                    }
+                    SwapManager.stopAllAngularMotion();
 
                     SwapManager.CurrentlySelectedObject = null;
                 }
@@ -83,14 +74,5 @@ public class PickUpAble : MonoBehaviour
             }
         }
 
-    }
-
-    void stopRigidBodyRotation(Rigidbody rib)
-    {
-        rib.angularVelocity = Vector3.zero;
-        rib.freezeRotation = true;
-
-        rib.freezeRotation = false;
-        rib.constraints = RigidbodyConstraints.FreezePosition | RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationZ;
     }
 }
