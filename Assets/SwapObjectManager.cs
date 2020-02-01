@@ -32,6 +32,7 @@ public class SwapObjectManager : MonoBehaviour
 
     public void stopAllAngularMotion()
     {
+        Debug.Log("Stopping all angular motion");
         var rbs = FindObjectsOfType<Rigidbody>();
 
         for(var i = 0; i != rbs.Length; i += 1)
