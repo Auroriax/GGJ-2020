@@ -1,12 +1,24 @@
 bronnen open source:
+Models
 https://www.turbosquid.com/FullPreview/Index.cfm/ID/643868
 https://www.turbosquid.com/FullPreview/Index.cfm/ID/1262631
 https://www.turbosquid.com/FullPreview/Index.cfm/ID/1261714
 https://www.turbosquid.com/FullPreview/Index.cfm/ID/1128688
 https://www.turbosquid.com/FullPreview/Index.cfm/ID/1488687
+https://sketchfab.com/3d-models/wooden-beam-f2461ee4f4f148b7b0f771fda3113a44
 
+Planks file large: https://sketchfab.com/3d-models/old-planks-a50d9d9bdee74d5facd28283aa0ec3b3
+Light plank: https://sketchfab.com/3d-models/beam-hrt-ah-e325dddd6c9943479f697c73ecae4eea
+Metal beam: https://sketchfab.com/3d-models/beam-76c61733664345c8a1e11b4c507c8741
+
+Skyboxes
 https://opengameart.org/content/interstellar-skybox-png
 https://opengameart.org/content/gloomy-skybox
 
+Music
 https://opengameart.org/content/settlement-of-the-frontier-full
 https://opengameart.org/content/gothicvania-ghost-town
+https://freesound.org/people/LamaMakesMusic/sounds/403653/
+
+Textures
+https://naldzgraphics.net/free-seamless-concrete-textures/
