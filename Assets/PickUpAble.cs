@@ -25,7 +25,7 @@ public class PickUpAble : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //Control swapping cog wheels (I know this is very unoptimized)
+        //Control swapping cog wheels
         if (SwapManager.raycastSuccess && SwapManager.hit.collider.gameObject == this.gameObject && Input.GetMouseButtonDown(0))
         {
             if (SwapManager.CurrentlySelectedObject == null)
@@ -85,11 +85,12 @@ public class PickUpAble : MonoBehaviour
 
     }
 
-    void stopRigidBodyRotation(Rigidbody rb)
+    void stopRigidBodyRotation(Rigidbody rib)
     {
-        rb.angularVelocity = Vector3.zero;
-        rb.freezeRotation = true;
-        rb.freezeRotation = false;
-        rb.constraints = RigidbodyConstraints.FreezePosition | RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationZ;
+        rib.angularVelocity = Vector3.zero;
+        rib.freezeRotation = true;
+
+        rib.freezeRotation = false;
+        rib.constraints = RigidbodyConstraints.FreezePosition | RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationZ;
     }
 }
