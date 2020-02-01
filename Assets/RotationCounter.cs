@@ -2,7 +2,7 @@
 
 public class RotationCounter : MonoBehaviour
 {
-    public float SignalOnRotationDegrees = 180;  // max 360
+    public float SignalOnRotationDegrees = 180;
 
     public ProgressBar ProgressBar;
     public GameStateController GameStateController;
