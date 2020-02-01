@@ -27,7 +27,7 @@ public class SwapObjectManager : MonoBehaviour
     void Update()
     {
         ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-        raycastSuccess = Physics.Raycast(ray, out hit, 100.0f);
+        raycastSuccess = Physics.Raycast(ray, out hit, 1000.0f);
     }
 
     public void stopAllAngularMotion()

@@ -139,7 +139,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ProgressBarPlane: {fileID: 7015048374572469252}
-  Progress: 0.5
+  Progress: 0
 --- !u!1 &7015048374572469255
 GameObject:
   m_ObjectHideFlags: 0
