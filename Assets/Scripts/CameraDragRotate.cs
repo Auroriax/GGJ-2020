@@ -44,7 +44,7 @@ public class CameraDragRotate : MonoBehaviour
             x += Input.GetAxis("Horizontal") * keyboardMultiplier * xSpeed * distance * 0.02f;
             y -= Input.GetAxis("Vertical") * keyboardMultiplier * ySpeed * 0.02f;
         }
-        else
+        else if (Input.GetMouseButton(1) || Input.GetMouseButton(2))
         {
             x += Input.GetAxis("Mouse X") * xSpeed * distance * 0.02f;
             y -= Input.GetAxis("Mouse Y") * ySpeed * 0.02f;
@@ -54,12 +54,12 @@ public class CameraDragRotate : MonoBehaviour
 
         Quaternion rotation = Quaternion.Euler(y, x, 0);
 
-        distance = Mathf.Clamp(distance - Input.GetAxis("Mouse ScrollWheel") * 5, distanceMin, distanceMax);
+        distance = Mathf.Clamp(distance - Input.GetAxis("Mouse ScrollWheel") * 40, distanceMin, distanceMax);
 
             Vector3 negDistance = new Vector3(0.0f, 0.0f, -distance);
             Vector3 position = rotation * negDistance + target;
 
-        if (Input.GetMouseButton(1) || Input.GetMouseButton(2) || Input.GetAxis("Horizontal") != 0f || Input.GetAxis("Vertical") != 0f || !inited)
+        if (Input.GetMouseButton(1) || Input.GetMouseButton(2) || Input.GetAxis("Horizontal") != 0f || Input.GetAxis("Vertical") != 0f || !inited || Input.GetAxis("Mouse ScrollWheel") != 0)
         {
             transform.rotation = rotation;
             transform.position = position;
