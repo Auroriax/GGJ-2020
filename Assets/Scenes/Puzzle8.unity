@@ -448,6 +448,16 @@ PrefabInstance:
       propertyPath: GameStateController
       value: 
       objectReference: {fileID: 836557420}
+    - target: {fileID: 5116671933870943903, guid: ea37f7377bf7fc54ebc2212c1bb7269d,
+        type: 3}
+      propertyPath: DetectRotationAx
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5116671933870943903, guid: ea37f7377bf7fc54ebc2212c1bb7269d,
+        type: 3}
+      propertyPath: UseLocalRotation
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7255185194782487519, guid: ea37f7377bf7fc54ebc2212c1bb7269d,
         type: 3}
       propertyPath: m_LocalPosition.x
