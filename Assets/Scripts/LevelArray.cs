@@ -13,10 +13,10 @@ public class LevelArray : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Levels = LevelNames.Select((l, i) => new LevelData { LevelNr = i + 1, SceneName = l }).ToArray();
+        Levels = LevelNames.Select((l, i) => new LevelData { LevelNr = i + 1, SceneName = l.ToLower() }).ToArray();
 
         var currentScene = SceneManager.GetActiveScene();
-        var current = Levels.Select((l, i) => new { Level = l, i }).Where(l => l.Level.SceneName == currentScene.name).FirstOrDefault();
+        var current = Levels.Select((l, i) => new { Level = l, i }).Where(l => l.Level.SceneName == currentScene.name.ToLower()).FirstOrDefault();
         if (current == null)
             currentLevelIndex = -1;
         else
