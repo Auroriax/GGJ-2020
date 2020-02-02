@@ -7,9 +7,9 @@ public class RotationCounter : MonoBehaviour
     public ProgressBar ProgressBar;
     public GameStateController GameStateController;
 
-    public bool DetectPositiveMotion;
-    public float DetectedRotation = 0;
-    public float previousY;
+    private bool detectPositiveMotion;
+    private float detectedRotation = 0;
+    private float previousY;
 
     // Start is called before the first frame update
     void Start()
@@ -30,9 +30,9 @@ public class RotationCounter : MonoBehaviour
         else if (previousY < 90 && currentY >= 270)
             recalculatedPreviousY += 360;
 
-        DetectedRotation += currentY - recalculatedPreviousY;
+        detectedRotation += currentY - recalculatedPreviousY;
         previousY = currentY;
-        var positiveRotation = DetectedRotation > 0 ? DetectedRotation : DetectedRotation * -1;
+        var positiveRotation = detectedRotation > 0 ? detectedRotation : detectedRotation * -1;
 
         if (ProgressBar != null)
         {
