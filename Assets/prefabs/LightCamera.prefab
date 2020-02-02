@@ -98,8 +98,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8558cca5b1da83a4da542e53b3f4ae7e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 500
   target: {x: 0, y: 0, z: 0}
+  distance: 60
+  xSpeed: 20
+  ySpeed: 300
+  yMinLimit: 0
+  yMaxLimit: 80
+  distanceMin: 30
+  distanceMax: 100
+  keyboardMultiplier: 0.5
 --- !u!108 &6520054651478088599
 Light:
   m_ObjectHideFlags: 0

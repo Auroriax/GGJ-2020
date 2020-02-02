@@ -2467,6 +2467,16 @@ PrefabInstance:
       propertyPath: target.z
       value: 256.2
       objectReference: {fileID: 0}
+    - target: {fileID: 6520054651478088598, guid: dc5e4688cdb066d4e8e2ec9d25789d82,
+        type: 3}
+      propertyPath: target
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6520054651478088598, guid: dc5e4688cdb066d4e8e2ec9d25789d82,
+        type: 3}
+      propertyPath: watchPosition.x
+      value: -6.2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dc5e4688cdb066d4e8e2ec9d25789d82, type: 3}
 --- !u!1001 &7586676646577522165
