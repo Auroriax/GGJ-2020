@@ -21,12 +21,16 @@ public class CameraDragRotate : MonoBehaviour
     float x = 0.0f;
     float y = 0.0f;
 
+    public bool inited = false;
+
     // Use this for initialization
     void Start()
     {
         Vector3 angles = transform.eulerAngles;
         x = angles.y;
         y = angles.x;
+
+        distance = Vector3.Distance(this.transform.position, target);
     }
 
     void LateUpdate()
@@ -58,10 +62,11 @@ public class CameraDragRotate : MonoBehaviour
             Vector3 negDistance = new Vector3(0.0f, 0.0f, -distance);
             Vector3 position = rotation * negDistance + target;
 
-        if (Input.GetMouseButton(1) || Input.GetMouseButton(2) || Input.GetAxis("Horizontal") != 0f || Input.GetAxis("Vertical") != 0f)
+        if (Input.GetMouseButton(1) || Input.GetMouseButton(2) || Input.GetAxis("Horizontal") != 0f || Input.GetAxis("Vertical") != 0f || !inited)
         {
             transform.rotation = rotation;
             transform.position = position;
+            inited = true;
         }
     }
 
