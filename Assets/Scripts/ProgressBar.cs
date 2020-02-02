@@ -23,6 +23,8 @@ public class ProgressBar : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        Debug.Log(Progress);
+
         if (Progress < 0)
             Progress = 0;
         else if (Progress > 1)

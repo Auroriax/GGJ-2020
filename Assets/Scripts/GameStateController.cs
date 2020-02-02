@@ -23,6 +23,10 @@ public class GameStateController : MonoBehaviour
                 text += current.LevelNr.ToString();
             LevelText.text = text;
         }
+        else
+        {
+            Debug.LogWarning("No level text!");
+        }
     }
 
     public void ResetGame()
