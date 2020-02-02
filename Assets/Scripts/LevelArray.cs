@@ -4,6 +4,7 @@ using System.Linq;
 
 public class LevelArray : MonoBehaviour
 {
+    public string MainMenuName;
     public string[] LevelNames;
 
     public LevelData[] Levels { get; private set; }
@@ -12,7 +13,7 @@ public class LevelArray : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Levels = LevelNames.Select((l, i) => new LevelData { LevelNr = i, SceneName = l }).ToArray();
+        Levels = LevelNames.Select((l, i) => new LevelData { LevelNr = i + 1, SceneName = l }).ToArray();
 
         var currentScene = SceneManager.GetActiveScene();
         var current = Levels.Select((l, i) => new { Level = l, i }).Where(l => l.Level.SceneName == currentScene.name).FirstOrDefault();

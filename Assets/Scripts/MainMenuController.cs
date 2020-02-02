@@ -8,11 +8,15 @@ public class MainMenuController : MonoBehaviour
 
     public LevelArray LevelFinder;
 
+    bool once = false;
 
-    // Start is called before the first frame update
-    void Start()
+    void Update()
     {
+        if (once)
+            return;
+
         PopulateMenuItems();
+        once = true;
     }
 
     public void PopulateMenuItems()
