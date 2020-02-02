@@ -3,36 +3,61 @@
 public class RotationCounter : MonoBehaviour
 {
     public float SignalOnRotationDegrees = 180;
+    public DetectRotationAx DetectRotationAx = DetectRotationAx.Y;
+    public bool UseLocalRotation = false;
 
     public ProgressBar ProgressBar;
     public GameStateController GameStateController;
 
     private bool detectPositiveMotion;
     private float detectedRotation = 0;
-    private float previousY;
+    private Vector3 previous;
 
     // Start is called before the first frame update
     void Start()
     {
-        previousY = this.transform.rotation.eulerAngles.y;
+        previous = this.transform.rotation.eulerAngles;
     }
 
     // Update is called once per frame
     void Update()
     {
-        var currentY = this.transform.rotation.eulerAngles.y;
-        if (currentY == previousY)
+        Vector3 current;
+        if (!UseLocalRotation)
+            current = this.transform.rotation.eulerAngles;
+        else
+            current = this.transform.localEulerAngles;
+        if (current == previous)
             return;
 
-        var recalculatedPreviousY = previousY;
-        if (currentY < 90 && previousY >= 270)
-            recalculatedPreviousY -= 360;
-        else if (previousY < 90 && currentY >= 270)
-            recalculatedPreviousY += 360;
+        float currentAx;
+        float previousAx;
+        if (DetectRotationAx == DetectRotationAx.X)
+        {
+            currentAx = current.x;
+            previousAx = previous.x;
+        }
+        else if (DetectRotationAx == DetectRotationAx.Y)
+        {
+            currentAx = current.y;
+            previousAx = previous.y;
+        }
+        else
+        {
+            currentAx = current.z;
+            previousAx = previous.z;
+        }
 
-        detectedRotation += currentY - recalculatedPreviousY;
-        previousY = currentY;
+        var recalculatedPrevious = previousAx;
+        if (currentAx < 90 && previousAx >= 270)
+            recalculatedPrevious -= 360;
+        else if (previousAx < 90 && currentAx >= 270)
+            recalculatedPrevious += 360;
+
+        detectedRotation += currentAx - recalculatedPrevious;
         var positiveRotation = detectedRotation > 0 ? detectedRotation : detectedRotation * -1;
+
+        previous = current;
 
         if (ProgressBar != null)
         {
@@ -44,4 +69,11 @@ public class RotationCounter : MonoBehaviour
                 GameStateController.LevelCompleted();
         }
     }
+}
+
+public enum DetectRotationAx
+{
+    X,
+    Y,
+    Z
 }
