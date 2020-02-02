@@ -132,6 +132,31 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bar Slider (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 246149646799535882, guid: 8ea0a2e98fb8e0c4aaf8d9fa68b9990f,
+        type: 3}
+      propertyPath: m_Constraints
+      value: 122
+      objectReference: {fileID: 0}
+    - target: {fileID: 246149646799535882, guid: 8ea0a2e98fb8e0c4aaf8d9fa68b9990f,
+        type: 3}
+      propertyPath: m_Drag
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 246149646799535883, guid: 8ea0a2e98fb8e0c4aaf8d9fa68b9990f,
+        type: 3}
+      propertyPath: SwapForceDirection
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 246149646799535883, guid: 8ea0a2e98fb8e0c4aaf8d9fa68b9990f,
+        type: 3}
+      propertyPath: SwapMouseAx
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 246149646799535883, guid: 8ea0a2e98fb8e0c4aaf8d9fa68b9990f,
+        type: 3}
+      propertyPath: MoveDirection
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 246149646799535886, guid: 8ea0a2e98fb8e0c4aaf8d9fa68b9990f,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -426,7 +451,7 @@ PrefabInstance:
     - target: {fileID: 7255185194782487519, guid: ea37f7377bf7fc54ebc2212c1bb7269d,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 23.61
+      value: 22.8
       objectReference: {fileID: 0}
     - target: {fileID: 7255185194782487519, guid: ea37f7377bf7fc54ebc2212c1bb7269d,
         type: 3}
@@ -436,7 +461,7 @@ PrefabInstance:
     - target: {fileID: 7255185194782487519, guid: ea37f7377bf7fc54ebc2212c1bb7269d,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 12.25
+      value: 11.56
       objectReference: {fileID: 0}
     - target: {fileID: 7255185194782487519, guid: ea37f7377bf7fc54ebc2212c1bb7269d,
         type: 3}
@@ -1152,7 +1177,6 @@ GameObject:
   - component: {fileID: 1931077271}
   - component: {fileID: 1931077270}
   - component: {fileID: 1931077269}
-  - component: {fileID: 1931077268}
   m_Layer: 0
   m_Name: Cube
   m_TagString: Untagged
@@ -1160,19 +1184,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!65 &1931077268
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1931077267}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &1931077269
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -1435,6 +1446,31 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bar Slider
       objectReference: {fileID: 0}
+    - target: {fileID: 246149646799535882, guid: 8ea0a2e98fb8e0c4aaf8d9fa68b9990f,
+        type: 3}
+      propertyPath: m_Drag
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 246149646799535882, guid: 8ea0a2e98fb8e0c4aaf8d9fa68b9990f,
+        type: 3}
+      propertyPath: m_Constraints
+      value: 118
+      objectReference: {fileID: 0}
+    - target: {fileID: 246149646799535883, guid: 8ea0a2e98fb8e0c4aaf8d9fa68b9990f,
+        type: 3}
+      propertyPath: MoveDirection
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 246149646799535883, guid: 8ea0a2e98fb8e0c4aaf8d9fa68b9990f,
+        type: 3}
+      propertyPath: SwapForceDirection
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 246149646799535883, guid: 8ea0a2e98fb8e0c4aaf8d9fa68b9990f,
+        type: 3}
+      propertyPath: SwapMouseAx
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 246149646799535886, guid: 8ea0a2e98fb8e0c4aaf8d9fa68b9990f,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1448,7 +1484,7 @@ PrefabInstance:
     - target: {fileID: 246149646799535886, guid: 8ea0a2e98fb8e0c4aaf8d9fa68b9990f,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 259.1
+      value: 259.47
       objectReference: {fileID: 0}
     - target: {fileID: 246149646799535886, guid: 8ea0a2e98fb8e0c4aaf8d9fa68b9990f,
         type: 3}
