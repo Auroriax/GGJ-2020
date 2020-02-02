@@ -1,42 +1,85 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
+using System.Collections;
 
+[AddComponentMenu("Camera-Control/Mouse Orbit with zoom")]
 public class CameraDragRotate : MonoBehaviour
 {
-    public float speed = 1f;
-    public float minZoomLevel = 500f;
-    public float maxZoomLevel = 25f;
+
     public Vector3 target;
+    public float distance = 5.0f;
+    public float xSpeed = 120.0f;
+    public float ySpeed = 120.0f;
 
-    // Update is called once per frame
-    void Update()
+    public float yMinLimit = -20f;
+    public float yMaxLimit = 80f;
+
+    public float distanceMin = .5f;
+    public float distanceMax = 15f;
+
+    public float keyboardMultiplier = 25f;
+
+    float x = 0.0f;
+    float y = 0.0f;
+
+    // Use this for initialization
+    void Start()
     {
-        if (Input.GetMouseButton(1) || Input.GetMouseButton(2))
+        Vector3 angles = transform.eulerAngles;
+        x = angles.y;
+        y = angles.x;
+    }
+
+    void LateUpdate()
+    {
+        if (Input.GetMouseButtonDown(1) || Input.GetMouseButtonDown(2))
         {
-            //Debug.Log("X: " + Input.GetAxis("Mouse X") + " Y: " + Input.GetAxis("Mouse Y"));
-            //transform.RotateAround(target, Vector3.right, -Input.GetAxis("Mouse Y") * speed * Time.deltaTime);
-            RotateCamera(Input.GetAxis("Mouse X") * speed * Time.deltaTime);
+            Vector3 angles = transform.eulerAngles;
+            x = ClampAngle(angles.y);
+            y = ClampAngle(angles.x);
         }
 
-        if (Input.GetAxis("Horizontal") != 0f) {
-            transform.RotateAround(target, Vector3.up, Input.GetAxis("Horizontal") * speed * Time.deltaTime * 0.5f);
+        if (Input.GetAxis("Horizontal") != 0f || Input.GetAxis("Vertical") != 0f)
+        {
+            x += Input.GetAxis("Horizontal") * keyboardMultiplier * xSpeed * distance * 0.02f;
+            y -= Input.GetAxis("Vertical") * keyboardMultiplier * ySpeed * 0.02f;
+        }
+        else
+        {
+            x += Input.GetAxis("Mouse X") * xSpeed * distance * 0.02f;
+            y -= Input.GetAxis("Mouse Y") * ySpeed * 0.02f;
         }
 
-        if (Input.mouseScrollDelta.y != 0)
+        y = ClampAngle(y, yMinLimit, yMaxLimit);
+
+        Quaternion rotation = Quaternion.Euler(y, x, 0);
+
+        distance = Mathf.Clamp(distance - Input.GetAxis("Mouse ScrollWheel") * 5, distanceMin, distanceMax);
+
+            Vector3 negDistance = new Vector3(0.0f, 0.0f, -distance);
+            Vector3 position = rotation * negDistance + target;
+
+        if (Input.GetMouseButton(1) || Input.GetMouseButton(2) || Input.GetAxis("Horizontal") != 0f || Input.GetAxis("Vertical") != 0f)
         {
-            Debug.Log("Changing zoom level");
-            var prevPos = transform.position;
-            transform.position = Vector3.MoveTowards(transform.position, target, Input.mouseScrollDelta.y * 5f);
-            if (Vector3.Distance(transform.position,target) <= maxZoomLevel || Vector3.Distance(transform.position, target) >= minZoomLevel)
-            {
-                transform.position = prevPos;
-            }
+            transform.rotation = rotation;
+            transform.position = position;
         }
     }
 
-    private void RotateCamera(float amount)
+    public static float ClampAngle(float angle)
     {
-        transform.RotateAround(target, Vector3.up, amount);
+        if (angle < -360F)
+            angle += 360F;
+        if (angle > 360F)
+            angle -= 360F;
+        return angle;
+    }
+
+    public static float ClampAngle(float angle, float min, float max)
+    {
+        if (angle < -360F)
+            angle += 360F;
+        if (angle > 360F)
+            angle -= 360F;
+        return Mathf.Clamp(angle, min, max);
     }
 }
