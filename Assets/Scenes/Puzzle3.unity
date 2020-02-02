@@ -1521,7 +1521,7 @@ PrefabInstance:
     - target: {fileID: 6338175589694466499, guid: 064ab2fc59cef684eacd9c1a3da2575b,
         type: 3}
       propertyPath: SignalOnRotationDegrees
-      value: 500
+      value: 250
       objectReference: {fileID: 0}
     - target: {fileID: 8591191081833307292, guid: 064ab2fc59cef684eacd9c1a3da2575b,
         type: 3}
