@@ -35,12 +35,9 @@ public class CameraDragRotate : MonoBehaviour
 
     void LateUpdate()
     {
-        if (Input.GetMouseButtonDown(1) || Input.GetMouseButtonDown(2))
-        {
-            Vector3 angles = transform.eulerAngles;
-            x = ClampAngle(angles.y);
-            y = ClampAngle(angles.x);
-        }
+        Vector3 angles = transform.eulerAngles;
+        x = ClampAngle(angles.y);
+        y = ClampAngle(angles.x);
 
         if (Input.GetAxis("Horizontal") != 0f || Input.GetAxis("Vertical") != 0f)
         {
