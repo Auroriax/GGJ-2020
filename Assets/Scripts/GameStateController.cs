@@ -1,32 +1,26 @@
-﻿using System.Linq;
-using TMPro;
+﻿using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class GameStateController : MonoBehaviour
 {
-    public string[] LevelNames;
+    public LevelArray LevelArray;
     public TextMeshProUGUI LevelText;
 
-    public int Current { get; private set; }
+    private LevelData current;
 
     // Start is called before the first frame update
     void Start()
     {
-        var currentScene = SceneManager.GetActiveScene();
-        var search = LevelNames.Select((l, i) => new { name = l, i}).Where(l => l.name == currentScene.name).FirstOrDefault();
-        if (search == null)
-            Current = -1;
-        else
-            Current = search.i;
+        current = LevelArray.GetCurrent();
 
         if (LevelText != null)
         {
             var text = "Level ";
-            if (Current == -1)
+            if (current == null)
                 text += "U";
             else
-                text += (Current + 1).ToString();
+                text += current.LevelNr.ToString();
             LevelText.text = text;
         }
     }
@@ -37,6 +31,11 @@ public class GameStateController : MonoBehaviour
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
+    public void MainMenu()
+    {
+        SceneManager.LoadScene(LevelArray.MainMenuName);
+    }
+
     public void LevelCompleted()
     {
         NextLevel();
@@ -44,19 +43,19 @@ public class GameStateController : MonoBehaviour
 
     public void NextLevel()
     {
-        if (Current < LevelNames.Length - 1)
-            SceneManager.LoadScene(LevelNames[Current + 1]);
-        else if (LevelNames.Length == 0)
-            ResetGame();
+        var next = LevelArray.GetNextLevel();
+        if (next == null)
+            MainMenu();
         else
-            SceneManager.LoadScene(LevelNames[0]);
+            SceneManager.LoadScene(next.SceneName);
     }
 
     public void PreviousLevel()
     {
-        if (Current > 0)
-            SceneManager.LoadScene(LevelNames[Current - 1]);
+        var prv = LevelArray.GetPreviousLevel();
+        if (prv == null)
+            MainMenu();
         else
-            ResetGame();
+            SceneManager.LoadScene(prv.SceneName);
     }
 }
