@@ -973,6 +973,7 @@ MonoBehaviour:
   - Puzzle3
   - Puzzle4
   - Puzzle5
+  - Puzzle6
   LevelText: {fileID: 2747989032669926801}
 --- !u!1 &6051457455983612186
 GameObject:
