@@ -16,7 +16,7 @@ public class GameStateController : MonoBehaviour
 
         if (LevelText != null)
         {
-            var text = "Level ";
+            var text = "";
             if (current == null)
                 text += "U";
             else
