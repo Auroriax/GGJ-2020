@@ -43,6 +43,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d79740e96ace804b993666b44732623, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  MainMenuName: MainMenu
   LevelNames:
   - Puzzle1
   - Puzzle2
@@ -51,3 +52,4 @@ MonoBehaviour:
   - Puzzle5
   - Puzzle6
   - Puzzle7
+  - Puzzle8
